@@ -147,7 +147,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 /* === FLOATING 3D ELEMENTS === */
 .floating-elements{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
 .floating-cube{position:absolute;width:40px;height:40px;transform-style:preserve-3d;animation:rotateCube 20s linear infinite}
-.floating-cube .face{position:absolute;width:40px;height:40px;border:1px solid rgba(0,0,0,0.06);backface-visibility:visible}
+.floating-cube .face{position:absolute;width:40px;height:40px;border:1.5px solid rgba(0,0,0,0.12);backface-visibility:visible}
 .floating-cube .front{transform:translateZ(20px)}
 .floating-cube .back{transform:rotateY(180deg) translateZ(20px)}
 .floating-cube .right{transform:rotateY(90deg) translateZ(20px)}
@@ -156,7 +156,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 .floating-cube .bottom{transform:rotateX(-90deg) translateZ(20px)}
 @keyframes rotateCube{0%{transform:rotateX(0deg) rotateY(0deg)}100%{transform:rotateX(360deg) rotateY(360deg)}}
 
-.floating-equation{position:absolute;font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(0,0,0,0.04);white-space:nowrap;animation:floatEquation 30s linear infinite;pointer-events:none}
+.floating-equation{position:absolute;font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(0,0,0,0.12);white-space:nowrap;animation:floatEquation 30s linear infinite;pointer-events:none}
 @keyframes floatEquation{0%{transform:translateX(100vw) translateY(0)}100%{transform:translateX(-100vw) translateY(-20px)}}
 
 .interactive-chart{cursor:pointer;transition:transform 0.3s}
@@ -668,8 +668,8 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
     y: Math.random() * h,
     vx: (Math.random() - 0.5) * 0.3,
     vy: (Math.random() - 0.5) * 0.3,
-    size: Math.random() * 2 + 0.5,
-    opacity: Math.random() * 0.08 + 0.02
+    size: Math.random() * 3 + 1,
+    opacity: Math.random() * 0.15 + 0.05
   }));
   
   // Graph points
@@ -723,7 +723,7 @@ document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0,0,0,${0.02 * (1 - dist/120)})`;
+          ctx.strokeStyle = `rgba(0,0,0,${0.06 * (1 - dist/120)})`;
           ctx.lineWidth = 0.5;
           ctx.stroke();
         }
