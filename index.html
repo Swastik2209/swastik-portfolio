@@ -6,344 +6,316 @@
 <title>Swastik Mishra</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0
-
-
-
-
-
-
-
-@keyframes pulseC{0%,100%{transform:scale(1);opacity:0.15}50%{transform:scale(1.2);opacity:0.3}}
-}
-html{scroll-behavior:smooth;font-size:16px;-webkit-font-smoothing:antialiased}
-body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;overflow-x:hidden;letter-spacing:-0.01em}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;overflow-x:hidden}
 ::selection{background:#111;color:#fff}
 ::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:#ccc;border-radius:2px}
-.t-display{font-size:clamp(3rem,8vw,7rem);font-weight:800;line-height:0.92;letter-spacing:-0.04em}
-.t-heading{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-0.03em}
-.t-subheading{font-size:1.1rem;color:#666;line-height:1.6}
-.t-body{font-size:0.95rem;color:#555;line-height:1.7}
-.t-mono{font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:0.05em;text-transform:uppercase;color:#999}
-.t-label{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#bbb}
-.container{max-width:1200px;margin:0 auto;padding:0 40px}
-.section{padding:120px 0;position:relative;overflow:visible}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
-.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 40px;display:flex;justify-content:space-between;align-items:center;transition:all 0.4s;background:rgba(250,250,250,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.05)}
-.header-logo{font-weight:800;font-size:1.1rem;letter-spacing:-0.02em}
-.header-nav{display:flex;gap:32px}
-.header-nav a{font-size:0.8rem;font-weight:500;color:#666;text-decoration:none;transition:color 0.2s}
-.header-nav a:hover{color:#111}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:80px;position:relative}
-.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;margin-bottom:24px}
-.hero-eyebrow::before{content:'';width:24px;height:1px;background:#111}
-.hero-tag{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#888}
-.hero h1{margin-bottom:24px}
-.hero p{margin-bottom:40px;max-width:480px}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#111;color:#fff;border-radius:100px;font-size:0.85rem;font-weight:500;text-decoration:none;transition:all 0.3s}
-.hero-cta:hover{background:#333;gap:14px}
-.hero-cta svg{width:14px;height:14px;transition:transform 0.3s}
-.hero-cta:hover svg{transform:translateX(4px)}
-.hero-visual{position:relative;height:500px;border-radius:20px;overflow:hidden;background:#f0f0f0}
-.hero-visual-inner{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.hero-visual-cell{background:#e8e8e8}
-.hero-visual-cell:nth-child(1){background:#111}.hero-visual-cell:nth-child(2){background:#ddd}
-.hero-visual-cell:nth-child(3){background:#ccc}.hero-visual-cell:nth-child(4){background:#222}
-.hero-visual-cell:nth-child(5){background:#eee}.hero-visual-cell:nth-child(6){background:#1a1a1a}
-.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px}
-.hero-scroll span{font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#999}
-.hero-scroll-line{width:1px;height:40px;background:linear-gradient(180deg,#111,transparent);animation:scrollLine 2s ease-in-out infinite}
-@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
-.about-divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,#ddd,transparent);margin:0 0 80px}
-.about-content p{margin-bottom:20px}.about-content p strong{color:#111;font-weight:600}
-.work-item{padding:60px 0;border-bottom:1px solid #eee}
-.work-item-inner{display:grid;grid-template-columns:1fr 2fr;gap:60px;align-items:start}
-.work-item h3{font-size:1.4rem;font-weight:600;margin-bottom:12px;letter-spacing:-0.02em}
-.work-item p{color:#666;font-size:0.9rem;line-height:1.7;max-width:500px}
-.work-tags{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-.work-tags span{padding:4px 12px;border:1px solid #e0e0e0;border-radius:100px;font-size:0.7rem;color:#666}
-.work-links{display:flex;gap:20px;margin-top:16px}
-.work-links a{font-size:0.8rem;font-weight:500;color:#111;text-decoration:none;transition:color 0.2s}
-.work-links a:hover{color:#666}
-.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#e0e0e0;margin-top:48px}
-.skill-cell{padding:24px 28px;background:#fafafa;display:flex;justify-content:space-between;align-items:center}
-.skill-name{font-size:0.9rem;font-weight:500}.skill-level{font-family:'DM Mono',monospace;font-size:0.7rem;color:#999}
-.timeline-item{display:grid;grid-template-columns:140px 1fr;gap:40px;padding:32px 0;border-bottom:1px solid #eee}
-.timeline-date{font-family:'DM Mono',monospace;font-size:0.75rem;color:#999;padding-top:4px}
-.timeline-content h3{font-size:1rem;font-weight:600;margin-bottom:4px}
-.timeline-content p{font-size:0.9rem;color:#666}
-.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:80px}
-.contact-links{display:flex;flex-direction:column;gap:1px;background:#e0e0e0}
-.contact-link{padding:24px 28px;background:#fafafa;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#111;transition:background 0.2s}
-.contact-link:hover{background:#f0f0f0}
-.contact-link .link-arrow{font-size:1.2rem;color:#999;transition:transform 0.3s}
-.contact-link:hover .link-arrow{transform:translateX(4px)}
-.contact-form{display:flex;flex-direction:column;gap:1px;background:#e0e0e0}
-.contact-form input,.contact-form textarea{padding:16px 20px;background:#fafafa;border:none;font-size:0.9rem;font-family:'Inter',sans-serif;color:#111;outline:none}
-.contact-form textarea{resize:vertical;min-height:120px}
-.contact-form button{padding:16px 20px;background:#111;color:#fff;border:none;font-size:0.85rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif}
-.footer{padding:80px 0;border-top:1px solid #eee}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start}
-.footer-left p{margin-top:8px;color:#999;font-size:0.85rem}
-.footer-right{display:flex;gap:24px}
-.footer-right a{font-size:0.8rem;color:#666;text-decoration:none;transition:color 0.2s}
-.footer-right a:hover{color:#111}
-.reveal{opacity:0;transform:translateY(20px);transition:all 0.6s cubic-bezier(0.16,1,0.3,1)}.reveal.active{opacity:1;transform:none}
-@media(max-width:768px){.container{padding:0 20px}.hero-grid,.grid-2,.contact-layout{grid-template-columns:1fr;gap:40px}.work-item-inner{grid-template-columns:1fr;gap:20px}.skills-grid{grid-template-columns:1fr}.timeline-item{grid-template-columns:1fr;gap:12px}.section{padding:80px 0}.header{padding:16px 20px}.header-nav{gap:16px}}
-@keyframes cubeSpin{0%{transform:rotateX(0) rotateY(0)}50%{transform:rotateX(180deg) rotateY(180deg)}100%{transform:rotateX(360deg) rotateY(360deg)}}
-@keyframes driftEq{0%,100%{transform:translateX(0)}50%{transform:translateX(25px) translateY(-12px)}}
 
+.header{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;justify-content:space-between;align-items:center;background:rgba(250,250,250,0.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.logo{font-weight:800;font-size:1.05rem;letter-spacing:-0.02em}
+.nav{display:flex;gap:28px}
+.nav a{font-size:0.8rem;font-weight:500;color:#777;text-decoration:none;transition:color .2s}.nav a:hover{color:#111}
 
+.container{max-width:1100px;margin:0 auto;padding:0 48px}
+.section{padding:100px 0}
 
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:64px;align-items:center}
+.hero-tag{display:inline-block;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#999;margin-bottom:20px;border-left:2px solid #111;padding-left:10px}
+.hero h1{font-size:clamp(2.8rem,6vw,4.5rem);font-weight:800;line-height:0.95;letter-spacing:-0.035em;margin-bottom:20px}
+.hero p{font-size:1rem;color:#666;line-height:1.7;max-width:440px;margin-bottom:32px}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#111;color:#fff;border-radius:100px;font-size:0.82rem;font-weight:500;text-decoration:none;transition:all .3s}
+.hero-cta:hover{background:#333;gap:12px}
+.hero-visual{height:420px;border-radius:16px;overflow:hidden;background:#f0f0f0;display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.hero-visual div:nth-child(1){background:#111}.hero-visual div:nth-child(2){background:#ddd}
+.hero-visual div:nth-child(3){background:#ccc}.hero-visual div:nth-child(4){background:#222}
+.hero-visual div:nth-child(5){background:#eee}.hero-visual div:nth-child(6){background:#1a1a1a}
+.hero-stats{display:flex;gap:32px;margin-top:28px}
+.hero-stats .num{font-weight:800;font-size:1.6rem}.hero-stats .label{font-size:0.75rem;color:#999;margin-top:2px}
 
+.about-divider{height:1px;background:linear-gradient(90deg,transparent,#ddd,transparent);margin-bottom:64px}
+.grid-2{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
+.t-label{font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;color:#bbb}
+.t-heading{font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:700;line-height:1.1;letter-spacing:-0.025em;margin-top:12px}
+.t-sub{font-size:1rem;color:#666;line-height:1.7}
+.t-body{font-size:0.92rem;color:#555;line-height:1.75}.t-body p{margin-bottom:14px}.t-body strong{color:#111;font-weight:600}
+.t-mono{font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:0.05em;text-transform:uppercase;color:#999}
 
+.work-item{padding:48px 0;border-bottom:1px solid #eee}
+.work-grid{display:grid;grid-template-columns:1fr 2fr;gap:48px;align-items:start}
+.work-item h3{font-size:1.25rem;font-weight:600;margin-bottom:8px;letter-spacing:-0.015em}
+.work-item p{color:#666;font-size:0.88rem;line-height:1.7;max-width:420px}
+.tags{display:flex;gap:6px;margin-top:12px;flex-wrap:wrap}
+.tags span{padding:3px 10px;border:1px solid #e0e0e0;border-radius:100px;font-size:0.68rem;color:#777}
+.work-links{display:flex;gap:16px;margin-top:12px}
+.work-links a{font-size:0.78rem;font-weight:500;color:#111;text-decoration:none}.work-links a:hover{color:#888}
 
+.dash{background:#fafafa;border:1px solid #e8e8e8;border-radius:10px;padding:20px;height:220px;display:flex;flex-direction:column;gap:12px;overflow:hidden}
+.dash-head{display:flex;justify-content:space-between;align-items:center}
+.dash-head span{font-size:0.7rem;font-weight:600}.dash-head small{font-family:'DM Mono',monospace;font-size:0.6rem;color:#999}
+.cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.card{background:#111;color:#fff;padding:10px;border-radius:6px}
+.card small{font-family:'DM Mono',monospace;font-size:0.55rem;color:#888;display:block;margin-bottom:3px}
+.card .val{font-size:1.1rem;font-weight:700}
+.bars{flex:1;display:flex;align-items:flex-end;gap:3px;padding-top:4px}
+.bar{flex:1;background:#e0e0e0;border-radius:3px 3px 0 0}.bar.dark{background:#111}
+.bar-labels{display:flex;justify-content:space-between;font-family:'DM Mono',monospace;font-size:0.5rem;color:#ccc}
 
-50%{transform:rotateX(180deg) rotateY(180deg)}100%{transform:rotateX(360deg) rotateY(360deg)}}
-50%{transform:translateX(20px) translateY(-10px)}}
-50%{transform:scale(1.15);opacity:.25}}
+.dark-panel{background:#111;border-radius:8px;padding:12px;color:#fff;flex:1}
+.dark-panel small{font-family:'DM Mono',monospace;font-size:0.5rem;color:#888;display:block;margin-bottom:4px}
+.dark-panel .row{font-size:0.75rem;color:#ccc;line-height:1.8}
+.dark-panel .green{color:#22c55e}
+
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#e0e0e0;margin-top:40px}
+.skill{padding:18px 22px;background:#fafafa;display:flex;justify-content:space-between;align-items:center}
+.skill-name{font-size:0.88rem;font-weight:500}.skill-lv{font-family:'DM Mono',monospace;font-size:0.68rem;color:#999}
+
+.tl{padding-left:28px;border-left:1px solid #eee}
+.tl-item{padding:24px 0 24px 28px;border-bottom:1px solid #eee;position:relative}
+.tl-item::before{content:'';position:absolute;left:-5px;top:28px;width:9px;height:9px;background:#111;border-radius:50%;border:2px solid #fafafa}
+.tl-item:last-child{border-bottom:none}
+.tl-date{font-family:'DM Mono',monospace;font-size:0.7rem;color:#999;margin-bottom:4px}
+.tl-item h4{font-size:0.95rem;font-weight:600;margin-bottom:3px}
+.tl-item p{font-size:0.85rem;color:#666}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.links{display:flex;flex-direction:column}
+.link{padding:14px 0;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center;text-decoration:none;color:#111;transition:color .2s;font-size:0.88rem;font-weight:500}
+.link:hover{color:#888}.link span:last-child{color:#bbb;transition:transform .2s}.link:hover span:last-child{transform:translateX(4px)}
+.form{display:flex;flex-direction:column;gap:10px}
+.form input,.form textarea{padding:12px 16px;background:#fff;border:1px solid #e8e8e8;border-radius:6px;font-size:0.88rem;font-family:inherit;color:#111;outline:none;transition:border-color .2s}
+.form input:focus,.form textarea:focus{border-color:#111}
+.form textarea{resize:vertical;min-height:100px}
+.form button{padding:12px 24px;background:#111;color:#fff;border:none;border-radius:6px;font-size:0.82rem;font-weight:500;cursor:pointer;font-family:inherit}
+
+.footer{padding:48px 0;border-top:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.footer p{font-size:0.8rem;color:#999}
+.footer-links{display:flex;gap:20px}.footer-links a{font-size:0.78rem;color:#777;text-decoration:none}.footer-links a:hover{color:#111}
+
+@media(max-width:768px){.container{padding:0 20px}.hero-grid,.grid-2,.contact-grid{grid-template-columns:1fr;gap:32px}.work-grid{grid-template-columns:1fr;gap:20px}.skills{grid-template-columns:1fr}.section{padding:64px 0}.header{padding:14px 20px}.nav{gap:16px}}
 </style>
 </head>
 <body>
 <header class="header">
-  <div class="header-logo">Swastik Mishra</div>
-  <nav class="header-nav"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
+  <div class="logo">Swastik Mishra</div>
+  <nav class="nav"><a href="#about">About</a><a href="#work">Work</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#contact">Contact</a></nav>
 </header>
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow"><span class="hero-tag">AI Systems · Quantitative Finance · Physics</span></div>
-        <h1 class="t-display">Building<br>systems that<br><em style="font-style:normal">think.</em></h1>
-        <p class="t-subheading">Physics honours student at Azim Premji University (9.0 CGPA). Building AI automation pipelines, FastAPI backends, and quantitative finance systems. Currently running NEXUS AI — an autonomous business targeting $1M ARR.</p>
-        <a href="#work" class="hero-cta">View Selected Work <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-visual-inner">
-          <div class="hero-visual-cell"></div><div class="hero-visual-cell"></div>
-          <div class="hero-visual-cell"></div><div class="hero-visual-cell"></div>
-          <div class="hero-visual-cell"></div><div class="hero-visual-cell"></div>
-        </div>
+<div class="container">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-tag">AI Systems · Quantitative Finance · Physics</div>
+      <h1>Building<br>systems that<br><em style="font-style:normal">think.</em></h1>
+      <p>Physics honours student at Azim Premji University (9.0 CGPA). Building AI automation pipelines, FastAPI backends, and quantitative finance systems. Currently running NEXUS AI — an autonomous business targeting $1M ARR.</p>
+      <a href="#work" class="hero-cta">View Work →</a>
+      <div class="hero-stats">
+        <div><div class="num">9.0</div><div class="label">CGPA</div></div>
+        <div><div class="num">5+</div><div class="label">Systems Built</div></div>
+        <div><div class="num">$1M</div><div class="label">Revenue Target</div></div>
       </div>
     </div>
+    <div class="hero-visual"><div></div><div></div><div></div><div></div><div></div><div></div></div>
   </div>
-  <div class="hero-scroll"><span>Scroll</span><div class="hero-scroll-line"></div></div>
+</div>
 </section>
 
 <section class="section" id="about">
-  <div class="container">
-    <div class="about-divider"></div>
-    <div class="grid-2">
-      <div>
-        <div class="t-label">About</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div>
-        <h2 class="t-heading" style="margin-top:16px">Physics meets<br>AI meets business</h2>
-      </div>
-      <div class="about-content">
-        <p class="t-body">Physics honours student maintaining a <strong>9.0 CGPA</strong> at Azim Premji University, combining rigorous quantitative training with hands-on software engineering.</p>
-        <p class="t-body">I build AI automation pipelines, FastAPI backends, and payment-integrated web platforms for international clients. My work spans from Black-Scholes derivatives pricing to building self-running AI business empires.</p>
-        <p class="t-body">Currently building <strong>NEXUS AI</strong> — an autonomous AI company with 12+ SaaS products targeting $1M ARR. The system runs 24/7, generating revenue through automated lead generation, AI content creation, and enterprise solutions.</p>
-      </div>
+<div class="container">
+  <div class="about-divider"></div>
+  <div class="grid-2">
+    <div><div class="t-label">About</div><h2 class="t-heading">Physics meets AI meets business</h2></div>
+    <div class="t-body">
+      <p>Physics honours student maintaining a <strong>9.0 CGPA</strong> at Azim Premji University, combining rigorous quantitative training with hands-on software engineering.</p>
+      <p>I build AI automation pipelines, FastAPI backends, and payment-integrated web platforms for international clients. My work spans from Black-Scholes derivatives pricing to building self-running AI business empires.</p>
+      <p>Currently building <strong>NEXUS AI</strong> — an autonomous AI company with 12+ SaaS products targeting $1M ARR. The system runs 24/7, generating revenue through automated lead generation, AI content creation, and enterprise solutions.</p>
     </div>
   </div>
+</div>
 </section>
 
 <section class="section" id="work">
-  <div class="container">
-    <div class="t-label" style="margin-bottom:48px">Selected Work</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div>
-    <div class="work-item"><div class="work-item-inner"><div>
+<div class="container">
+  <div class="t-label" style="margin-bottom:40px">Selected Work</div>
+
+  <div class="work-item"><div class="work-grid">
+    <div>
       <div class="t-mono">2024 — Present</div><h3>NEXUS AI</h3>
       <p>Autonomous AI business empire with 12+ SaaS products. Automated lead generation, AI content creation, enterprise solutions.</p>
-      <div class="work-tags"><span>AI</span><span>SaaS</span><span>FastAPI</span><span>$1M Target</span></div>
+      <div class="tags"><span>AI</span><span>SaaS</span><span>FastAPI</span><span>$1M Target</span></div>
       <div class="work-links"><a href="https://github.com/Swastik2209">Source →</a><a href="https://nexus-image-gen-two.vercel.app">Live →</a></div>
     </div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-</div>
-<div style="background:#fafafa;border-radius:12px;height:240px;border:1px solid #e0e0e0;padding:24px;display:flex;flex-direction:column;gap:16px">
-      <div style="display:flex;justify-content:space-between"><span style="font-size:0.75rem;font-weight:600">NEXUS AI Dashboard</span><span style="font-size:0.65rem;color:#999;font-family:'DM Mono',monospace">LIVE</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px"><div style="background:#111;color:#fff;padding:12px;border-radius:8px"><div style="font-size:0.6rem;color:#888">REVENUE</div><div style="font-size:1.2rem;font-weight:700;margin-top:4px">$499/mo</div></div><div style="background:#111;color:#fff;padding:12px;border-radius:8px"><div style="font-size:0.6rem;color:#888">CLIENTS</div><div style="font-size:1.2rem;font-weight:700;margin-top:4px">12</div></div><div style="background:#111;color:#fff;padding:12px;border-radius:8px"><div style="font-size:0.6rem;color:#888">LEADS</div><div style="font-size:1.2rem;font-weight:700;margin-top:4px">1,247</div></div></div>
-      <div style="flex:1;display:flex;align-items:flex-end;gap:4px;padding-top:8px">
-        <div style="flex:1;background:#e0e0e0;border-radius:4px 4px 0 0;height:30%"></div><div style="flex:1;background:#e0e0e0;border-radius:4px 4px 0 0;height:45%"></div><div style="flex:1;background:#111;border-radius:4px 4px 0 0;height:60%"></div><div style="flex:1;background:#e0e0e0;border-radius:4px 4px 0 0;height:55%"></div><div style="flex:1;background:#111;border-radius:4px 4px 0 0;height:75%"></div><div style="flex:1;background:#e0e0e0;border-radius:4px 4px 0 0;height:70%"></div><div style="flex:1;background:#111;border-radius:4px 4px 0 0;height:85%"></div><div style="flex:1;background:#111;border-radius:4px 4px 0 0;height:90%"></div><div style="flex:1;background:#e0e0e0;border-radius:4px 4px 0 0;height:80%"></div><div style="flex:1;background:#111;border-radius:4px 4px 0 0;height:95%"></div>
+    <div class="dash">
+      <div class="dash-head"><span>NEXUS AI Dashboard</span><small>LIVE</small></div>
+      <div class="cards">
+        <div class="card"><small>REVENUE</small><div class="val">$499/mo</div></div>
+        <div class="card"><small>CLIENTS</small><div class="val">12</div></div>
+        <div class="card"><small>LEADS</small><div class="val">1,247</div></div>
       </div>
-    </div></div></div>
+      <div class="bars"><div class="bar" style="height:30%"></div><div class="bar dark" style="height:45%"></div><div class="bar dark" style="height:60%"></div><div class="bar" style="height:55%"></div><div class="bar dark" style="height:75%"></div><div class="bar" style="height:70%"></div><div class="bar dark" style="height:85%"></div><div class="bar dark" style="height:90%"></div><div class="bar" style="height:80%"></div><div class="bar dark" style="height:95%"></div></div>
+      <div class="bar-labels"><span>JAN</span><span>FEB</span><span>MAR</span><span>APR</span><span>MAY</span><span>JUN</span><span>JUL</span><span>AUG</span><span>SEP</span><span>OCT</span></div>
+    </div>
+  </div></div>
 
-    <div class="work-item"><div class="work-item-inner"><div>
+  <div class="work-item"><div class="work-grid">
+    <div>
       <div class="t-mono">2024 — Present</div><h3>MiMo / Hermes — AI Data Intelligence</h3>
       <p>Ollama-based system with scrapers for CoinGecko, FDA, and FRED data. Scheduled agents, FastAPI endpoints.</p>
-      <div class="work-tags"><span>FastAPI</span><span>Ollama</span><span>Automation</span></div>
+      <div class="tags"><span>FastAPI</span><span>Ollama</span><span>Automation</span></div>
       <div class="work-links"><a href="https://github.com/Swastik2209">Source →</a></div>
-    </div><div style="background:#fafafa;border-radius:12px;height:240px;border:1px solid #e0e0e0;padding:24px;display:flex;flex-direction:column">
-      <div style="display:flex;justify-content:space-between;margin-bottom:16px"><span style="font-size:0.75rem;font-weight:600">Data Pipeline</span><span style="font-size:0.65rem;color:#22c55e;font-family:'DM Mono',monospace">RUNNING</span></div>
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;flex:1">
-        <div style="background:#111;border-radius:8px;padding:12px;color:#fff"><div style="font-size:0.55rem;color:#888;margin-bottom:6px">SOURCES</div><div style="font-size:0.8rem;line-height:1.8;color:#ccc"><div>CoinGecko ✓</div><div>FDA Data ✓</div><div>FRED API ✓</div></div></div>
-        <div style="background:#111;border-radius:8px;padding:12px;color:#fff"><div style="font-size:0.55rem;color:#888;margin-bottom:6px">ENDPOINTS</div><div style="font-size:0.8rem;line-height:1.8;color:#ccc"><div>/api/leads GET</div><div>/api/revenue GET</div><div>/api/scrape POST</div></div></div>
-        <div style="background:#111;border-radius:8px;padding:12px;color:#fff"><div style="font-size:0.55rem;color:#888;margin-bottom:6px">STATUS</div><div style="font-size:0.8rem;line-height:1.8;color:#ccc"><div>Uptime 99.9%</div><div>Requests 12.4K</div><div>Latency 45ms</div></div></div>
+    </div>
+    <div class="dash">
+      <div class="dash-head"><span>Data Pipeline</span><small style="color:#22c55e">RUNNING</small></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;flex:1">
+        <div class="dark-panel"><small>SOURCES</small><div class="row">CoinGecko ✓</div><div class="row">FDA Data ✓</div><div class="row">FRED API ✓</div></div>
+        <div class="dark-panel"><small>ENDPOINTS</small><div class="row">/api/leads GET</div><div class="row">/api/revenue GET</div><div class="row">/api/scrape POST</div></div>
+        <div class="dark-panel"><small>STATUS</small><div class="row">Uptime <span class="green">99.9%</span></div><div class="row">Requests <span class="green">12.4K</span></div><div class="row">Latency <span class="green">45ms</span></div></div>
       </div>
-    </div></div></div>
+    </div>
+  </div></div>
 
-    <div class="work-item"><div class="work-item-inner"><div>
+  <div class="work-item"><div class="work-grid">
+    <div>
       <div class="t-mono">2023 — Present</div><h3>Quantitative Finance Toolkit</h3>
       <p>Brownian motion simulator, NIFTY drawdown analysis, and portfolio-optimization models. Black-Scholes pricing.</p>
-      <div class="work-tags"><span>Python</span><span>Quant</span><span>Finance</span></div>
+      <div class="tags"><span>Python</span><span>Quant</span><span>Finance</span></div>
       <div class="work-links"><a href="https://github.com/Swastik2209">Source →</a></div>
-    </div><div style="background:#fafafa;border-radius:12px;height:240px;border:1px solid #e0e0e0;padding:24px;display:flex;flex-direction:column">
-      <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="font-size:0.75rem;font-weight:600">Black-Scholes Model</span><span style="font-size:0.65rem;color:#999;font-family:'DM Mono',monospace">PYTHON</span></div>
-      <div style="background:#111;border-radius:8px;padding:16px;font-family:'DM Mono',monospace;font-size:0.7rem;color:#22c55e;line-height:1.6;flex:1"><div style="color:#888">def black_scholes(S, K, T, r, sigma):</div><div>  d1 = (log(S/K) + (r + sigma**2/2)*T)</div><div>    / (sigma * sqrt(T))</div><div>  d2 = d1 - sigma * sqrt(T)</div><div style="margin-top:8px">  return S*N(d1) - K*exp(-r*T)*N(d2)</div><div style="margin-top:12px;color:#888"># Portfolio optimization</div><div>  weights = optimize(portfolio)</div><div>  sharpe = returns / volatility</div><div style="margin-top:8px;color:#555">>>> backtest(SPY, period="5Y")</div><div style="color:#22c55e">Sharpe: 1.42 | CAGR: 18.7%</div></div>
-    </div></div></div>
+    </div>
+    <div class="dash">
+      <div class="dash-head"><span>Black-Scholes Model</span><small>PYTHON</small></div>
+      <div style="background:#111;border-radius:6px;padding:14px;font-family:'DM Mono',monospace;font-size:0.68rem;color:#22c55e;line-height:1.7;flex:1">
+        <div style="color:#888">def black_scholes(S, K, T, r, sigma):</div>
+        <div>&nbsp;&nbsp;d1 = (log(S/K) + (r + sigma**2/2)*T)</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/ (sigma * sqrt(T))</div>
+        <div>&nbsp;&nbsp;d2 = d1 - sigma * sqrt(T)</div>
+        <div style="margin-top:6px">&nbsp;&nbsp;return S*N(d1) - K*exp(-r*T)*N(d2)</div>
+        <div style="margin-top:10px;color:#888"># Portfolio optimization</div>
+        <div>&nbsp;&nbsp;weights = optimize(portfolio)</div>
+        <div>&nbsp;&nbsp;sharpe = returns / volatility</div>
+        <div style="margin-top:6px;color:#555">>>> backtest(SPY, period="5Y")</div>
+        <div style="color:#22c55e">Sharpe: 1.42 | CAGR: 18.7%</div>
+      </div>
+    </div>
+  </div></div>
 
-    <div class="work-item"><div class="work-item-inner"><div>
+  <div class="work-item"><div class="work-grid">
+    <div>
       <div class="t-mono">2024</div><h3>IndiaEcon Intelligence</h3>
       <p>Scroll-driven interactive economics platform translating macroeconomic data into visual exploration.</p>
-      <div class="work-tags"><span>Data Viz</span><span>Interactive</span><span>Economics</span></div>
+      <div class="tags"><span>Data Viz</span><span>Interactive</span><span>Economics</span></div>
       <div class="work-links"><a href="https://github.com/Swastik2209">Source →</a></div>
-    </div><div style="background:#fafafa;border-radius:12px;height:240px;border:1px solid #e0e0e0;padding:24px;display:flex;flex-direction:column">
-      <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="font-size:0.75rem;font-weight:600">India GDP vs Inflation</span><span style="font-size:0.65rem;color:#999">INTERACTIVE</span></div>
-      <div style="flex:1;display:flex;flex-direction:column;gap:8px">
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:0.65rem;color:#999;width:40px">2024</span><div style="flex:1;height:8px;background:#e8e8e8;border-radius:4px;overflow:hidden"><div style="width:72%;height:100%;background:#111;border-radius:4px"></div></div><span style="font-size:0.7rem;font-weight:600;width:40px;text-align:right">7.2%</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:0.65rem;color:#999;width:40px">2023</span><div style="flex:1;height:8px;background:#e8e8e8;border-radius:4px;overflow:hidden"><div style="width:78%;height:100%;background:#111;border-radius:4px"></div></div><span style="font-size:0.7rem;font-weight:600;width:40px;text-align:right">7.8%</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:0.65rem;color:#999;width:40px">2022</span><div style="flex:1;height:8px;background:#e8e8e8;border-radius:4px;overflow:hidden"><div style="width:68%;height:100%;background:#111;border-radius:4px"></div></div><span style="font-size:0.7rem;font-weight:600;width:40px;text-align:right">6.8%</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:0.65rem;color:#999;width:40px">2021</span><div style="flex:1;height:8px;background:#e8e8e8;border-radius:4px;overflow:hidden"><div style="width:85%;height:100%;background:#111;border-radius:4px"></div></div><span style="font-size:0.7rem;font-weight:600;width:40px;text-align:right">8.5%</span></div>
-        <div style="display:flex;align-items:center;gap:12px"><span style="font-size:0.65rem;color:#999;width:40px">2020</span><div style="flex:1;height:8px;background:#e8e8e8;border-radius:4px;overflow:hidden"><div style="width:35%;height:100%;background:#999;border-radius:4px"></div></div><span style="font-size:0.7rem;font-weight:600;width:40px;text-align:right">-6.6%</span></div>
+    </div>
+    <div class="dash">
+      <div class="dash-head"><span>India GDP vs Inflation</span><small>INTERACTIVE</small></div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex:1">
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#999;width:36px">2024</span><div style="flex:1;height:7px;background:#e8e8e8;border-radius:3px;overflow:hidden"><div style="width:72%;height:100%;background:#111;border-radius:3px"></div></div><span style="font-size:0.68rem;font-weight:600;width:36px;text-align:right">7.2%</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#999;width:36px">2023</span><div style="flex:1;height:7px;background:#e8e8e8;border-radius:3px;overflow:hidden"><div style="width:78%;height:100%;background:#111;border-radius:3px"></div></div><span style="font-size:0.68rem;font-weight:600;width:36px;text-align:right">7.8%</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#999;width:36px">2022</span><div style="flex:1;height:7px;background:#e8e8e8;border-radius:3px;overflow:hidden"><div style="width:68%;height:100%;background:#111;border-radius:3px"></div></div><span style="font-size:0.68rem;font-weight:600;width:36px;text-align:right">6.8%</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#999;width:36px">2021</span><div style="flex:1;height:7px;background:#e8e8e8;border-radius:3px;overflow:hidden"><div style="width:85%;height:100%;background:#111;border-radius:3px"></div></div><span style="font-size:0.68rem;font-weight:600;width:36px;text-align:right">8.5%</span></div>
+        <div style="display:flex;align-items:center;gap:10px"><span style="font-family:'DM Mono',monospace;font-size:0.6rem;color:#999;width:36px">2020</span><div style="flex:1;height:7px;background:#e8e8e8;border-radius:3px;overflow:hidden"><div style="width:35%;height:100%;background:#999;border-radius:3px"></div></div><span style="font-size:0.68rem;font-weight:600;width:36px;text-align:right">-6.6%</span></div>
         <div style="display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #e8e8e8">
-          <div style="text-align:center"><div style="font-size:1.1rem;font-weight:700">$3.7T</div><div style="font-size:0.6rem;color:#999">GDP 2024</div></div>
-          <div style="text-align:center"><div style="font-size:1.1rem;font-weight:700">5th</div><div style="font-size:0.6rem;color:#999">World Rank</div></div>
-          <div style="text-align:center"><div style="font-size:1.1rem;font-weight:700">1.4B</div><div style="font-size:0.6rem;color:#999">Population</div></div>
+          <div style="text-align:center"><div style="font-size:1rem;font-weight:700">$3.7T</div><div style="font-size:0.55rem;color:#999">GDP 2024</div></div>
+          <div style="text-align:center"><div style="font-size:1rem;font-weight:700">5th</div><div style="font-size:0.55rem;color:#999">World Rank</div></div>
+          <div style="text-align:center"><div style="font-size:1rem;font-weight:700">1.4B</div><div style="font-size:0.55rem;color:#999">Population</div></div>
         </div>
       </div>
-    </div></div></div>
+    </div>
+  </div></div>
 
-    <div class="work-item" style="border-bottom:none"><div class="work-item-inner"><div>
+  <div class="work-item" style="border-bottom:none"><div class="work-grid">
+    <div>
       <div class="t-mono">2024</div><h3>Client Demo — Palo Alto Central Dental</h3>
       <p>Live production demo site for booking flows and payment integration.</p>
-      <div class="work-tags"><span>Web Dev</span><span>Payments</span><span>Production</span></div>
+      <div class="tags"><span>Web Dev</span><span>Payments</span><span>Production</span></div>
       <div class="work-links"><a href="https://github.com/Swastik2209">Source →</a></div>
-    </div><div style="background:#fafafa;border-radius:12px;height:240px;border:1px solid #e0e0e0;padding:24px;display:flex;flex-direction:column">
-      <div style="display:flex;justify-content:space-between;margin-bottom:12px"><span style="font-size:0.75rem;font-weight:600">Palo Alto Central Dental</span><span style="font-size:0.65rem;color:#22c55e">PRODUCTION</span></div>
-      <div style="background:#111;border-radius:12px;padding:20px;color:#fff;flex:1;display:flex;flex-direction:column;justify-content:space-between">
-        <div><div style="font-size:0.6rem;color:#888;margin-bottom:4px">NEXT APPOINTMENT</div><div style="font-size:1.1rem;font-weight:600;margin-bottom:8px">Dr. Smith — Cleaning</div><div style="display:flex;gap:16px;font-size:0.75rem;color:#888"><span>Jul 15, 2026</span><span>10:30 AM</span><span>Room 4</span></div></div>
-        <div style="display:flex;gap:8px;margin-top:12px"><div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:1rem;font-weight:600;color:#22c55e">$12.4K</div><div style="font-size:0.65rem;color:#888">Revenue</div></div><div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:1rem;font-weight:600;color:#22c55e">342</div><div style="font-size:0.65rem;color:#888">Patients</div></div><div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:1rem;font-weight:600;color:#22c55e">98%</div><div style="font-size:0.65rem;color:#888">Satisfaction</div></div></div>
+    </div>
+    <div class="dash">
+      <div class="dash-head"><span>Palo Alto Central Dental</span><small style="color:#22c55e">PRODUCTION</small></div>
+      <div style="background:#111;border-radius:10px;padding:16px;color:#fff;flex:1;display:flex;flex-direction:column;justify-content:space-between">
+        <div><small style="color:#888">NEXT APPOINTMENT</small><div style="font-size:1rem;font-weight:600;margin-top:4px">Dr. Smith — Cleaning</div><div style="display:flex;gap:12px;font-size:0.7rem;color:#888;margin-top:4px"><span>Jul 15, 2026</span><span>10:30 AM</span><span>Room 4</span></div></div>
+        <div style="display:flex;gap:6px;margin-top:10px">
+          <div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:0.95rem;font-weight:600;color:#22c55e">$12.4K</div><div style="font-size:0.6rem;color:#888">Revenue</div></div>
+          <div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:0.95rem;font-weight:600;color:#22c55e">342</div><div style="font-size:0.6rem;color:#888">Patients</div></div>
+          <div style="flex:1;padding:8px;background:rgba(255,255,255,0.05);border-radius:6px;text-align:center"><div style="font-size:0.95rem;font-weight:600;color:#22c55e">98%</div><div style="font-size:0.6rem;color:#888">Satisfaction</div></div>
+        </div>
       </div>
-    </div></div></div>
-  </div>
+    </div>
+  </div></div>
+</div>
 </section>
 
 <section class="section" id="skills">
-  <div class="container">
-    <div class="grid-2">
-      <div><div class="t-label">Skills</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-</div><h2 class="t-heading" style="margin-top:16px">Tools &<br>technologies</h2></div>
-      <div><div class="skills-grid">
-        <div class="skill-cell"><span class="skill-name">Python</span><span class="skill-level">Expert</span></div>
-        <div class="skill-cell"><span class="skill-name">FastAPI</span><span class="skill-level">Expert</span></div>
-        <div class="skill-cell"><span class="skill-name">AI / ML Pipelines</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-cell"><span class="skill-name">Quantitative Finance</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-cell"><span class="skill-name">LaTeX / TikZ</span><span class="skill-level">Expert</span></div>
-        <div class="skill-cell"><span class="skill-name">JavaScript</span><span class="skill-level">Proficient</span></div>
-        <div class="skill-cell"><span class="skill-name">Razorpay / Stripe</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-cell"><span class="skill-name">Data Visualization</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-cell"><span class="skill-name">Ollama / Local LLMs</span><span class="skill-level">Advanced</span></div>
-        <div class="skill-cell"><span class="skill-name">Vercel / Deployment</span><span class="skill-level">Proficient</span></div>
-      </div></div>
+<div class="container">
+  <div class="grid-2">
+    <div><div class="t-label">Skills</div><h2 class="t-heading">Tools & technologies</h2></div>
+    <div class="skills">
+      <div class="skill"><span class="skill-name">Python</span><span class="skill-lv">Expert</span></div>
+      <div class="skill"><span class="skill-name">FastAPI</span><span class="skill-lv">Expert</span></div>
+      <div class="skill"><span class="skill-name">AI / ML Pipelines</span><span class="skill-lv">Advanced</span></div>
+      <div class="skill"><span class="skill-name">Quantitative Finance</span><span class="skill-lv">Advanced</span></div>
+      <div class="skill"><span class="skill-name">LaTeX / TikZ</span><span class="skill-lv">Expert</span></div>
+      <div class="skill"><span class="skill-name">JavaScript</span><span class="skill-lv">Proficient</span></div>
+      <div class="skill"><span class="skill-name">Razorpay / Stripe</span><span class="skill-lv">Advanced</span></div>
+      <div class="skill"><span class="skill-name">Data Visualization</span><span class="skill-lv">Advanced</span></div>
     </div>
   </div>
+</div>
 </section>
 
 <section class="section" id="experience">
-  <div class="container">
-    <div class="grid-2">
-      <div><div class="t-label">Experience</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div><h2 class="t-heading" style="margin-top:16px">Where I've<br>been</h2></div>
-      <div>
-        <div class="timeline-item"><div class="timeline-date">2024 — Now</div><div class="timeline-content"><h3>Founder, NEXUS AI</h3><p>Autonomous AI business with 12+ SaaS products. Full-stack development, AI pipelines, payment systems.</p></div></div>
-        <div class="timeline-item"><div class="timeline-date">2024 — Now</div><div class="timeline-content"><h3>AI Systems Builder</h3><p>AI automation pipelines, FastAPI backends, payment-integrated platforms for international clients.</p></div></div>
-        <div class="timeline-item"><div class="timeline-date">2023 — Now</div><div class="timeline-content"><h3>Quantitative Finance Researcher</h3><p>Self-directed depth in derivatives pricing, volatility modelling, and portfolio optimization.</p></div></div>
-        <div class="timeline-item" style="border-bottom:none"><div class="timeline-date">2022 — Now</div><div class="timeline-content"><h3>B.Sc. Physics, Azim Premji University</h3><p>9.0 CGPA. Research with Prof. KC Adaina. Climate economics paper.</p></div></div>
-      </div>
+<div class="container">
+  <div class="grid-2">
+    <div><div class="t-label">Experience</div><h2 class="t-heading">Where I've been</h2></div>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-date">2024 — Now</div><h4>Founder, NEXUS AI</h4><p>Autonomous AI business with 12+ SaaS products. Full-stack development, AI pipelines, payment systems.</p></div>
+      <div class="tl-item"><div class="tl-date">2024 — Now</div><h4>AI Systems Builder</h4><p>AI automation pipelines, FastAPI backends, payment-integrated platforms for international clients.</p></div>
+      <div class="tl-item"><div class="tl-date">2023 — Now</div><h4>Quantitative Finance Researcher</h4><p>Self-directed depth in derivatives pricing, volatility modelling, and portfolio optimization.</p></div>
+      <div class="tl-item"><div class="tl-date">2022 — Now</div><h4>B.Sc. Physics, Azim Premji University</h4><p>9.0 CGPA. Research with Prof. KC Adaina. Climate economics paper.</p></div>
     </div>
   </div>
+</div>
 </section>
 
 <section class="section" id="contact">
-  <div class="container">
-    <div class="t-label" style="margin-bottom:48px">Contact</div>
-<div class="s s2"></div><div class="s s3"></div></div></div>
-</div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-<div class="f f2"></div><div class="f f3"></div></div></div>
-</div>
-    <div class="contact-layout">
-      <div><h2 class="t-heading" style="margin-bottom:24px">Let's work<br>together</h2><p class="t-subheading" style="max-width:400px">Available for freelance projects, consulting, and collaboration.</p></div>
-      <div><div class="contact-links">
-        <a href="mailto:swastikmishra3558@gmail.com" class="contact-link"><span>Email</span><span class="link-arrow">→</span></a>
-        <a href="https://github.com/Swastik2209" class="contact-link" target="_blank"><span>GitHub</span><span class="link-arrow">→</span></a>
-        <a href="https://t.me/AutoMarketing2209Bot" class="contact-link" target="_blank"><span>Telegram</span><span class="link-arrow">→</span></a>
-        <a href="https://nexus-image-gen-two.vercel.app" class="contact-link" target="_blank"><span>NEXUS AI Products</span><span class="link-arrow">→</span></a>
-      </div></div>
+<div class="container">
+  <div class="t-label" style="margin-bottom:40px">Contact</div>
+  <div class="contact-grid">
+    <div><h2 class="t-heading" style="margin-bottom:16px">Let's work together</h2><p class="t-sub">Available for freelance projects, consulting, and collaboration.</p></div>
+    <div>
+      <div class="links">
+        <a href="mailto:swastikmishra3558@gmail.com" class="link"><span>Email</span><span>→</span></a>
+        <a href="https://github.com/Swastik2209" class="link"><span>GitHub</span><span>→</span></a>
+        <a href="https://t.me/AutoMarketing2209Bot" class="link"><span>Telegram</span><span>→</span></a>
+        <a href="https://nexus-image-gen-two.vercel.app" class="link"><span>NEXUS AI Products</span><span>→</span></a>
+      </div>
     </div>
   </div>
+</div>
 </section>
 
-<footer class="footer"><div class="container"><div class="footer-inner">
-  <div class="footer-left"><div class="header-logo">Swastik Mishra</div><p>AI Systems · Quantitative Finance · Physics</p></div>
-  <div class="footer-right"><a href="https://github.com/Swastik2209">GitHub</a><a href="mailto:swastikmishra3558@gmail.com">Email</a><a href="https://t.me/AutoMarketing2209Bot">Telegram</a></div>
-</div></footer>
+<footer class="footer">
+<div class="container">
+  <div class="logo" style="font-size:0.95rem">Swastik Mishra</div>
+  <p>AI Systems · Quantitative Finance · Physics</p>
+  <div class="footer-links">
+    <a href="https://github.com/Swastik2209">GitHub</a>
+    <a href="mailto:swastikmishra3558@gmail.com">Email</a>
+    <a href="https://t.me/AutoMarketing2209Bot">Telegram</a>
+  </div>
+</div>
+</footer>
 
 <script>
 document.addEventListener('DOMContentLoaded',()=>{
-  const observer=new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}});
-  },{threshold:0.1});
-  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
   window.addEventListener('scroll',()=>{
+    const links=document.querySelectorAll('.nav a');
     const sections=document.querySelectorAll('section[id]');
-    const links=document.querySelectorAll('.header-nav a');
-    let current='';
-    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)current=s.getAttribute('id')});
-    links.forEach(a=>{a.style.color='';if(a.getAttribute('href')==='#'+current)a.style.color='#111'});
+    let cur='';
+    sections.forEach(s=>{if(window.scrollY>=s.offsetTop-200)cur=s.id});
+    links.forEach(a=>{a.style.color='';if(a.getAttribute('href')==='#'+cur)a.style.color='#111'});
   });
 });
 </script>
-</body></html>
+</body>
+</html>
