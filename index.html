@@ -144,20 +144,25 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 }
 
 
-/* === FLOATING 3D ELEMENTS — WHITE SPACE ONLY === */
-.floating-cube{position:absolute;width:48px;height:48px;transform-style:preserve-3d;z-index:0;pointer-events:none}
-.floating-cube .face{position:absolute;width:48px;height:48px;border:2px solid rgba(0,0,0,0.15);backface-visibility:visible;transition:all 0.3s}
-.floating-cube .front{transform:translateZ(24px)}
-.floating-cube .back{transform:rotateY(180deg) translateZ(24px)}
-.floating-cube .right{transform:rotateY(90deg) translateZ(24px)}
-.floating-cube .left{transform:rotateY(-90deg) translateZ(24px)}
-.floating-cube .top{transform:rotateX(90deg) translateZ(24px)}
-.floating-cube .bottom{transform:rotateX(-90deg) translateZ(24px)}
+/* === FLOATING 3D ELEMENTS — PURE CSS === */
+.floating-cube{position:absolute;width:50px;height:50px;transform-style:preserve-3d;pointer-events:none;animation:cubeSpin 15s linear infinite}
+.floating-cube .face{position:absolute;width:50px;height:50px;border:2px solid rgba(0,0,0,0.2);backface-visibility:visible}
+.floating-cube .front{transform:translateZ(25px)}
+.floating-cube .back{transform:rotateY(180deg) translateZ(25px)}
+.floating-cube .right{transform:rotateY(90deg) translateZ(25px)}
+.floating-cube .left{transform:rotateY(-90deg) translateZ(25px)}
+.floating-cube .top{transform:rotateX(90deg) translateZ(25px)}
+.floating-cube .bottom{transform:rotateX(-90deg) translateZ(25px)}
+@keyframes cubeSpin{0%{transform:rotateX(0) rotateY(0) translate(0,0)}25%{transform:rotateX(90deg) rotateY(90deg) translate(20px,-10px)}50%{transform:rotateX(180deg) rotateY(180deg) translate(0,0)}75%{transform:rotateX(270deg) rotateY(270deg) translate(-20px,10px)}100%{transform:rotateX(360deg) rotateY(360deg) translate(0,0)}}
 
-.floating-eq{position:absolute;font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(0,0,0,0.18);white-space:nowrap;z-index:0;pointer-events:none;font-weight:500}
+.floating-eq{position:absolute;font-family:'DM Mono',monospace;font-size:14px;color:rgba(0,0,0,0.2);white-space:nowrap;pointer-events:none;animation:driftEq 25s linear infinite}
+@keyframes driftEq{0%{transform:translateX(0) translateY(0)}25%{transform:translateX(30px) translateY(-15px)}50%{transform:translateX(0) translateY(5px)}75%{transform:translateX(-20px) translateY(-8px)}100%{transform:translateX(0) translateY(0)}}
 
-.floating-graph{position:absolute;width:180px;height:80px;z-index:0;pointer-events:none}
-.floating-graph svg{width:100%;height:100%}
+.floating-circle{position:absolute;border:2px solid rgba(0,0,0,0.1);border-radius:50%;pointer-events:none;animation:pulseCircle 4s ease-in-out infinite}
+@keyframes pulseCircle{0%,100%{transform:scale(1);opacity:0.15}50%{transform:scale(1.15);opacity:0.25}}
+
+.floating-line{position:absolute;height:1px;background:rgba(0,0,0,0.08);pointer-events:none;animation:lineSlide 20s linear infinite}
+@keyframes lineSlide{0%{transform:translateX(-100%)}100%{transform:translateX(100vw)}}
 
 .hover-3d{transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
 .hover-3d:hover{transform:perspective(800px) rotateY(-5deg) rotateX(3deg) scale(1.02)}
@@ -166,7 +171,7 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 </head>
 <body>
 
-<canvas id="interaction-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
+
 <header class="header">
   <div class="header-logo">Swastik Mishra</div>
   <nav class="header-nav">
@@ -617,97 +622,7 @@ const observer=new IntersectionObserver((entries)=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
 
 <script>
-// === FLOATING 3D ELEMENTS (WHITE SPACE ONLY, VISIBLE) ===
-(function(){
-  const canvas = document.getElementById('interaction-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h;
-  function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-  
-  // Find white space areas (sections with light backgrounds)
-  const whiteSpaces = [];
-  document.querySelectorAll('.section').forEach(s => {
-    const rect = s.getBoundingClientRect();
-    whiteSpaces.push({top: rect.top + window.scrollY, height: rect.height});
-  });
-  whiteSpaces.push({top: document.body.scrollHeight - 400, height: 400});
-  
-  // Equations that float in white spaces
-  const equations = [
-    'V = S·N(d₁) − K·e^(−rT)·N(d₂)', 'dS = μSdt + σSdW',
-    'E[R] = Rf + β(E[Rm] − Rf)', '∇²ψ + (2m/ℏ²)(E−V)ψ = 0',
-    'σ² = E[(X−μ)²]', 'P(A|B) = P(B|A)P(A)/P(B)',
-    'F = ma = dp/dt', '∂u/∂t = α∇²u', 'Cov(X,Y) = E[XY] − E[X]E[Y]',
-    'ΔS = S(μΔt + σ√Δt·z)', 'PV = FV / (1+r)^n', 'ε = σ/E'
-  ];
-  
-  // Place equations in random positions
-  const eqElements = [];
-  equations.forEach((eq, i) => {
-    const el = document.createElement('div');
-    el.className = 'floating-eq';
-    el.textContent = eq;
-    el.style.left = Math.random() * 85 + 5 + '%';
-    el.style.top = Math.random() * 80 + 10 + '%';
-    el.style.fontSize = (12 + Math.random() * 8) + 'px';
-    el.style.color = 'rgba(0,0,0,' + (0.15 + Math.random() * 0.1) + ')';
-    el.dataset.vx = (Math.random() - 0.5) * 0.5;
-    el.dataset.vy = (Math.random() - 0.5) * 0.3;
-    document.body.appendChild(el);
-    eqElements.push(el);
-  });
-  
-  // Place 3D cubes in white spaces
-  const cubeElements = [];
-  for (let i = 0; i < 5; i++) {
-    const el = document.createElement('div');
-    el.className = 'floating-cube';
-    el.style.left = (10 + Math.random() * 80) + '%';
-    el.style.top = (15 + Math.random() * 65) + '%';
-    el.innerHTML = '<div class="front"></div><div class="back"></div><div class="right"></div><div class="left"></div><div class="top"></div><div class="bottom"></div>';
-    document.body.appendChild(el);
-    cubeElements.push({el, rotX: Math.random() * 360, rotY: Math.random() * 360, speedX: 0.2 + Math.random() * 0.5, speedY: 0.3 + Math.random() * 0.4, vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.15});
-  }
-  
-  let frame = 0;
-  function animate() {
-    frame++;
-    // Move equations
-    eqElements.forEach(el => {
-      let x = parseFloat(el.style.left);
-      let y = parseFloat(el.style.top);
-      x += parseFloat(el.dataset.vx);
-      y += parseFloat(el.dataset.vy);
-      if (x < -10) x = 100;
-      if (x > 100) x = -10;
-      if (y < 5) el.dataset.vy = Math.abs(parseFloat(el.dataset.vy));
-      if (y > 85) el.dataset.vy = -Math.abs(parseFloat(el.dataset.vy));
-      el.style.left = x + '%';
-      el.style.top = y + '%';
-    });
-    
-    // Rotate cubes
-    cubeElements.forEach(c => {
-      c.rotX += c.speedX;
-      c.rotY += c.speedY;
-      c.el.style.transform = 'rotateX(' + c.rotX + 'deg) rotateY(' + c.rotY + 'deg)';
-      // Move cubes slowly
-      let x = parseFloat(c.el.style.left);
-      let y = parseFloat(c.el.style.top);
-      x += c.vx; y += c.vy;
-      if (x < 0 || x > 90) c.vx *= -1;
-      if (y < 5 || y > 85) c.vy *= -1;
-      c.el.style.left = x + '%';
-      c.el.style.top = y + '%';
-    });
-    
-    requestAnimationFrame(animate);
-  }
-  animate();
-})();
+
 </script>
 
 </body>
