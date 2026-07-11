@@ -144,28 +144,20 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 }
 
 
-/* === FLOATING 3D ELEMENTS === */
-.floating-elements{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
-.floating-cube{position:absolute;width:40px;height:40px;transform-style:preserve-3d;animation:rotateCube 20s linear infinite}
-.floating-cube .face{position:absolute;width:40px;height:40px;border:1.5px solid rgba(0,0,0,0.12);backface-visibility:visible}
-.floating-cube .front{transform:translateZ(20px)}
-.floating-cube .back{transform:rotateY(180deg) translateZ(20px)}
-.floating-cube .right{transform:rotateY(90deg) translateZ(20px)}
-.floating-cube .left{transform:rotateY(-90deg) translateZ(20px)}
-.floating-cube .top{transform:rotateX(90deg) translateZ(20px)}
-.floating-cube .bottom{transform:rotateX(-90deg) translateZ(20px)}
-@keyframes rotateCube{0%{transform:rotateX(0deg) rotateY(0deg)}100%{transform:rotateX(360deg) rotateY(360deg)}}
+/* === FLOATING 3D ELEMENTS — WHITE SPACE ONLY === */
+.floating-cube{position:absolute;width:48px;height:48px;transform-style:preserve-3d;z-index:0;pointer-events:none}
+.floating-cube .face{position:absolute;width:48px;height:48px;border:2px solid rgba(0,0,0,0.15);backface-visibility:visible;transition:all 0.3s}
+.floating-cube .front{transform:translateZ(24px)}
+.floating-cube .back{transform:rotateY(180deg) translateZ(24px)}
+.floating-cube .right{transform:rotateY(90deg) translateZ(24px)}
+.floating-cube .left{transform:rotateY(-90deg) translateZ(24px)}
+.floating-cube .top{transform:rotateX(90deg) translateZ(24px)}
+.floating-cube .bottom{transform:rotateX(-90deg) translateZ(24px)}
 
-.floating-equation{position:absolute;font-family:'DM Mono',monospace;font-size:0.6rem;color:rgba(0,0,0,0.12);white-space:nowrap;animation:floatEquation 30s linear infinite;pointer-events:none}
-@keyframes floatEquation{0%{transform:translateX(100vw) translateY(0)}100%{transform:translateX(-100vw) translateY(-20px)}}
+.floating-eq{position:absolute;font-family:'DM Mono',monospace;font-size:0.75rem;color:rgba(0,0,0,0.18);white-space:nowrap;z-index:0;pointer-events:none;font-weight:500}
 
-.interactive-chart{cursor:pointer;transition:transform 0.3s}
-.interactive-chart:hover{transform:scale(1.02)}
-
-.mini-graph{position:relative;height:120px;background:#fafafa;border:1px solid #e8e8e8;border-radius:8px;padding:16px;overflow:hidden}
-.mini-graph canvas{width:100%;height:100%}
-.mini-graph .graph-label{position:absolute;top:8px;left:12px;font-family:'DM Mono',monospace;font-size:0.6rem;color:#999}
-.mini-graph .graph-value{position:absolute;top:8px;right:12px;font-weight:700;color:#111}
+.floating-graph{position:absolute;width:180px;height:80px;z-index:0;pointer-events:none}
+.floating-graph svg{width:100%;height:100%}
 
 .hover-3d{transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1)}
 .hover-3d:hover{transform:perspective(800px) rotateY(-5deg) rotateX(3deg) scale(1.02)}
@@ -174,25 +166,6 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 </head>
 <body>
 
-<!-- FLOATING 3D ELEMENTS -->
-<div class="floating-elements" id="floating-elements">
-  <!-- Rotating cubes -->
-  <div class="floating-cube" style="top:15%;left:5%;animation-delay:0s;animation-duration:25s"><div class="front"></div><div class="back"></div><div class="right"></div><div class="left"></div><div class="top"></div><div class="bottom"></div></div>
-  <div class="floating-cube" style="top:60%;right:8%;animation-delay:5s;animation-duration:30s;width:30px;height:30px"><div class="front"></div><div class="back"></div><div class="right"></div><div class="left"></div><div class="top"></div><div class="bottom"></div></div>
-  <div class="floating-cube" style="top:80%;left:15%;animation-delay:10s;animation-duration:22s;width:25px;height:25px"><div class="front"></div><div class="back"></div><div class="right"></div><div class="left"></div><div class="top"></div><div class="bottom"></div></div>
-
-  <!-- Floating equations -->
-  <div class="floating-equation" style="top:20%;animation-delay:0s">V = S*N(d1) - K*e^(-rT)*N(d2)</div>
-  <div class="floating-equation" style="top:35%;animation-delay:8s">dS = μSdt + σSdW</div>
-  <div class="floating-equation" style="top:50%;animation-delay:15s">E[R] = Rf + β(E[Rm] - Rf)</div>
-  <div class="floating-equation" style="top:65%;animation-delay:22s">∇²ψ + (2m/ℏ²)(E-V)ψ = 0</div>
-  <div class="floating-equation" style="top:80%;animation-delay:4s">σ² = E[(X-μ)²]</div>
-  <div class="floating-equation" style="top:45%;animation-delay:12s">P(A|B) = P(B|A)P(A)/P(B)</div>
-  <div class="floating-equation" style="top:70%;animation-delay:18s">F = ma = dp/dt</div>
-  <div class="floating-equation" style="top:25%;animation-delay:25s">∂u/∂t = α∇²u</div>
-</div>
-
-<!-- INTERACTIVE CANVAS -->
 <canvas id="interaction-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none"></canvas>
 <header class="header">
   <div class="header-logo">Swastik Mishra</div>
@@ -644,116 +617,97 @@ const observer=new IntersectionObserver((entries)=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
 
 <script>
-// === FLOATING 3D INTERACTIVE CANVAS ===
+// === FLOATING 3D ELEMENTS (WHITE SPACE ONLY, VISIBLE) ===
 (function(){
   const canvas = document.getElementById('interaction-canvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let w, h;
-  
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
+  function resize() { w = canvas.width = window.innerWidth; h = canvas.height = window.innerHeight; }
   resize();
   window.addEventListener('resize', resize);
   
-  // Mouse tracking
-  let mx = w/2, my = h/2;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+  // Find white space areas (sections with light backgrounds)
+  const whiteSpaces = [];
+  document.querySelectorAll('.section').forEach(s => {
+    const rect = s.getBoundingClientRect();
+    whiteSpaces.push({top: rect.top + window.scrollY, height: rect.height});
+  });
+  whiteSpaces.push({top: document.body.scrollHeight - 400, height: 400});
   
-  // Particles
-  const particles = Array.from({length: 30}, () => ({
-    x: Math.random() * w,
-    y: Math.random() * h,
-    vx: (Math.random() - 0.5) * 0.3,
-    vy: (Math.random() - 0.5) * 0.3,
-    size: Math.random() * 3 + 1,
-    opacity: Math.random() * 0.15 + 0.05
-  }));
+  // Equations that float in white spaces
+  const equations = [
+    'V = S·N(d₁) − K·e^(−rT)·N(d₂)', 'dS = μSdt + σSdW',
+    'E[R] = Rf + β(E[Rm] − Rf)', '∇²ψ + (2m/ℏ²)(E−V)ψ = 0',
+    'σ² = E[(X−μ)²]', 'P(A|B) = P(B|A)P(A)/P(B)',
+    'F = ma = dp/dt', '∂u/∂t = α∇²u', 'Cov(X,Y) = E[XY] − E[X]E[Y]',
+    'ΔS = S(μΔt + σ√Δt·z)', 'PV = FV / (1+r)^n', 'ε = σ/E'
+  ];
   
-  // Graph points
-  const graphPoints = Array.from({length: 50}, (_, i) => ({
-    x: (i / 49) * w,
-    y: h/2 + Math.sin(i * 0.15) * 60 + Math.cos(i * 0.08) * 30
-  }));
+  // Place equations in random positions
+  const eqElements = [];
+  equations.forEach((eq, i) => {
+    const el = document.createElement('div');
+    el.className = 'floating-eq';
+    el.textContent = eq;
+    el.style.left = Math.random() * 85 + 5 + '%';
+    el.style.top = Math.random() * 80 + 10 + '%';
+    el.style.fontSize = (12 + Math.random() * 8) + 'px';
+    el.style.color = 'rgba(0,0,0,' + (0.15 + Math.random() * 0.1) + ')';
+    el.dataset.vx = (Math.random() - 0.5) * 0.5;
+    el.dataset.vy = (Math.random() - 0.5) * 0.3;
+    document.body.appendChild(el);
+    eqElements.push(el);
+  });
   
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    
-    // Draw subtle graph line
-    ctx.beginPath();
-    ctx.strokeStyle = 'rgba(0,0,0,0.015)';
-    ctx.lineWidth = 1;
-    graphPoints.forEach((p, i) => {
-      if (i === 0) ctx.moveTo(p.x, p.y);
-      else ctx.lineTo(p.x, p.y);
-    });
-    ctx.stroke();
-    
-    // Draw particles
-    particles.forEach(p => {
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < 0 || p.x > w) p.vx *= -1;
-      if (p.y < 0 || p.y > h) p.vy *= -1;
-      
-      // Mouse attraction
-      const dx = mx - p.x;
-      const dy = my - p.y;
-      const dist = Math.sqrt(dx*dx + dy*dy);
-      if (dist < 200) {
-        p.x += dx * 0.001;
-        p.y += dy * 0.001;
-      }
-      
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(0,0,0,${p.opacity})`;
-      ctx.fill();
-    });
-    
-    // Draw connections
-    for (let i = 0; i < particles.length; i++) {
-      for (let j = i + 1; j < particles.length; j++) {
-        const dx = particles[i].x - particles[j].x;
-        const dy = particles[i].y - particles[j].y;
-        const dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < 120) {
-          ctx.beginPath();
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(0,0,0,${0.06 * (1 - dist/120)})`;
-          ctx.lineWidth = 0.5;
-          ctx.stroke();
-        }
-      }
-    }
-    
-    requestAnimationFrame(draw);
+  // Place 3D cubes in white spaces
+  const cubeElements = [];
+  for (let i = 0; i < 5; i++) {
+    const el = document.createElement('div');
+    el.className = 'floating-cube';
+    el.style.left = (10 + Math.random() * 80) + '%';
+    el.style.top = (15 + Math.random() * 65) + '%';
+    el.innerHTML = '<div class="front"></div><div class="back"></div><div class="right"></div><div class="left"></div><div class="top"></div><div class="bottom"></div>';
+    document.body.appendChild(el);
+    cubeElements.push({el, rotX: Math.random() * 360, rotY: Math.random() * 360, speedX: 0.2 + Math.random() * 0.5, speedY: 0.3 + Math.random() * 0.4, vx: (Math.random()-0.5)*0.2, vy: (Math.random()-0.5)*0.15});
   }
-  draw();
+  
+  let frame = 0;
+  function animate() {
+    frame++;
+    // Move equations
+    eqElements.forEach(el => {
+      let x = parseFloat(el.style.left);
+      let y = parseFloat(el.style.top);
+      x += parseFloat(el.dataset.vx);
+      y += parseFloat(el.dataset.vy);
+      if (x < -10) x = 100;
+      if (x > 100) x = -10;
+      if (y < 5) el.dataset.vy = Math.abs(parseFloat(el.dataset.vy));
+      if (y > 85) el.dataset.vy = -Math.abs(parseFloat(el.dataset.vy));
+      el.style.left = x + '%';
+      el.style.top = y + '%';
+    });
+    
+    // Rotate cubes
+    cubeElements.forEach(c => {
+      c.rotX += c.speedX;
+      c.rotY += c.speedY;
+      c.el.style.transform = 'rotateX(' + c.rotX + 'deg) rotateY(' + c.rotY + 'deg)';
+      // Move cubes slowly
+      let x = parseFloat(c.el.style.left);
+      let y = parseFloat(c.el.style.top);
+      x += c.vx; y += c.vy;
+      if (x < 0 || x > 90) c.vx *= -1;
+      if (y < 5 || y > 85) c.vy *= -1;
+      c.el.style.left = x + '%';
+      c.el.style.top = y + '%';
+    });
+    
+    requestAnimationFrame(animate);
+  }
+  animate();
 })();
-
-// === INTERACTIVE GRAPHS ===
-document.querySelectorAll('.interactive-chart').forEach(chart => {
-  chart.addEventListener('mousemove', e => {
-    const rect = chart.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-    const y = ((1 - (e.clientY - rect.top) / rect.height) * 100).toFixed(1);
-    const tooltip = chart.querySelector('.graph-tooltip');
-    if (tooltip) {
-      tooltip.textContent = `x: ${x}% | y: ${y}%`;
-      tooltip.style.opacity = '1';
-      tooltip.style.left = (e.clientX - rect.left + 10) + 'px';
-      tooltip.style.top = (e.clientY - rect.top - 20) + 'px';
-    }
-  });
-  chart.addEventListener('mouseleave', () => {
-    const tooltip = chart.querySelector('.graph-tooltip');
-    if (tooltip) tooltip.style.opacity = '0';
-  });
-});
 </script>
 
 </body>
