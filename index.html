@@ -642,9 +642,9 @@ const observer=new IntersectionObserver((entries)=>{
   entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');observer.unobserve(e.target)}})
 },{threshold:0.1})
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el))
-</script>
 
 // === FLOATING 3D INTERACTIVE CANVAS ===
+<script>
 (function(){
   const canvas = document.getElementById('interaction-canvas');
   if (!canvas) return;
@@ -754,6 +754,7 @@ document.querySelectorAll('.interactive-chart').forEach(chart => {
     if (tooltip) tooltip.style.opacity = '0';
   });
 });
+</script>
 
 </body>
 </html>
