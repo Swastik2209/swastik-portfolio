@@ -28,9 +28,22 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 .hero-cta{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;background:#111;color:#fff;border-radius:100px;font-size:0.82rem;font-weight:500;text-decoration:none;transition:all .3s}
 .hero-cta:hover{background:#333;gap:12px}
 .hero-visual{height:480px;border-radius:16px;overflow:hidden;background:#f0f0f0;display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.hero-visual div:nth-child(1){background:#111}.hero-visual div:nth-child(2){background:#ddd}
-.hero-visual div:nth-child(3){background:#ccc}.hero-visual div:nth-child(4){background:#222}
-.hero-visual div:nth-child(5){background:#eee}.hero-visual div:nth-child(6){background:#1a1a1a}
+
+.tile{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.tile::after{content:'';position:absolute;inset:0;opacity:0;transition:opacity .3s}
+.tile:hover::after{opacity:1}
+.tile:nth-child(1)::after{background:linear-gradient(135deg,rgba(59,130,246,0.15),transparent)}
+.tile:nth-child(2)::after{background:linear-gradient(135deg,rgba(139,92,246,0.15),transparent)}
+.tile:nth-child(3)::after{background:linear-gradient(135deg,rgba(245,158,11,0.15),transparent)}
+.tile:nth-child(4)::after{background:linear-gradient(135deg,rgba(34,197,94,0.15),transparent)}
+.tile:nth-child(5)::after{background:linear-gradient(135deg,rgba(239,68,68,0.15),transparent)}
+.tile:nth-child(6)::after{background:linear-gradient(135deg,rgba(59,130,246,0.1),transparent)}
+.tile:nth-child(7)::after{background:linear-gradient(135deg,rgba(139,92,246,0.1),transparent)}
+.tile:nth-child(8)::after{background:linear-gradient(135deg,rgba(245,158,11,0.1),transparent)}
+.tile:nth-child(9)::after{background:linear-gradient(135deg,rgba(34,197,94,0.1),transparent)}
+.tile.shuffled{animation:tilePop .3s ease}
+@keyframes tilePop{0%{transform:scale(1)}50%{transform:scale(0.9)}100%{transform:scale(1)}}
+
 .hero-stats{display:flex;gap:32px;margin-top:28px}
 .hero-stats .num{font-weight:800;font-size:1.6rem}.hero-stats .label{font-size:0.75rem;color:#999;margin-top:2px}
 
@@ -116,7 +129,17 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
         <div><div class="num">$1M</div><div class="label">Revenue Target</div></div>
       </div>
     </div>
-    <div class="hero-visual"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div class="hero-visual" id="grid" style="display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:3px;cursor:pointer">
+      <div class="tile" data-color="#111" style="background:#111;transition:all .4s"></div>
+      <div class="tile" data-color="#ddd" style="background:#ddd;transition:all .4s"></div>
+      <div class="tile" data-color="#111" style="background:#111;transition:all .4s"></div>
+      <div class="tile" data-color="#ccc" style="background:#ccc;transition:all .4s"></div>
+      <div class="tile" data-color="#222" style="background:#222;transition:all .4s"></div>
+      <div class="tile" data-color="#eee" style="background:#eee;transition:all .4s"></div>
+      <div class="tile" data-color="#eee" style="background:#eee;transition:all .4s"></div>
+      <div class="tile" data-color="#1a1a1a" style="background:#1a1a1a;transition:all .4s"></div>
+      <div class="tile" data-color="#111" style="background:#111;transition:all .4s"></div>
+    </div>
   </div>
 </div>
 </section>
@@ -307,7 +330,55 @@ body{font-family:'Inter',system-ui,sans-serif;background:#fafafa;color:#111;over
 </footer>
 
 <script>
+// Interactive grid
 document.addEventListener('DOMContentLoaded',()=>{
+  const grid=document.getElementById('grid');
+  if(grid){
+    const colors=['#111','#222','#333','#ddd','#ccc','#eee','#1a1a1a','#0a0a0a','#f5f5f5','#888'];
+    grid.addEventListener('click',e=>{
+      const tile=e.target.closest('.tile');
+      if(!tile){
+        // Click empty space - shuffle all tiles
+        const tiles=grid.querySelectorAll('.tile');
+        const shuffled=[...tiles].sort(()=>Math.random()-0.5);
+        tiles.forEach((t,i)=>{
+          const newColor=colors[Math.floor(Math.random()*colors.length)];
+          t.style.background=newColor;
+          t.dataset.color=newColor;
+          t.classList.remove('shuffled');
+          void t.offsetWidth;
+          t.classList.add('shuffled');
+          setTimeout(()=>t.classList.remove('shuffled'),300);
+        });
+        return;
+      }
+      // Click a tile - cycle its color
+      const current=tile.dataset.color;
+      const newColor=colors[(colors.indexOf(current)+1)%colors.length];
+      tile.style.background=newColor;
+      tile.dataset.color=newColor;
+      tile.classList.remove('shuffled');
+      void tile.offsetWidth;
+      tile.classList.add('shuffled');
+    });
+    // Hover effect - swap two adjacent tiles
+    grid.addEventListener('mouseover',e=>{
+      const tile=e.target.closest('.tile');
+      if(!tile)return;
+      const tiles=[...grid.querySelectorAll('.tile')];
+      const idx=tiles.indexOf(tile);
+      const neighbors=[idx-1,idx+1,idx-3,idx+3].filter(i=>i>=0&&i<tiles.length);
+      if(neighbors.length>0){
+        const neighbor=tiles[neighbors[Math.floor(Math.random()*neighbors.length)]];
+        const temp=tile.style.background;
+        tile.style.background=neighbor.style.background;
+        neighbor.style.background=temp;
+        tile.style.transform='scale(0.95)';
+        setTimeout(()=>{tile.style.transform='scale(1)'},200);
+      }
+    });
+  }
+
   window.addEventListener('scroll',()=>{
     const links=document.querySelectorAll('.nav a');
     const sections=document.querySelectorAll('section[id]');
